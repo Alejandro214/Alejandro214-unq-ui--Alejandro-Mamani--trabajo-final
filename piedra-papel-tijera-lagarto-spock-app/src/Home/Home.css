@@ -1,0 +1,19 @@
+#titleGame{
+    text-align: center;
+    font-style:italic;
+    color:whitesmoke;
+
+}
+.boton-jugar {
+    display: grid;
+    height: 50px;
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+ 
+  }
+
+.center {
+    height: 100px;
+    width: 100px;;
+}

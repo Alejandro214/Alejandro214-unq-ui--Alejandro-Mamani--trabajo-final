@@ -1,0 +1,15 @@
+body {
+  font-family: 'Sans Serif', sans-serif;  
+  background-repeat:  initial no-repeat ;
+  
+  background-image: url('27af01926c5e37aef9dee917d29fe4da.jpg'); 
+}
+
+
+input {
+  width: 10%;
+  margin-bottom: 20px;
+  padding: 8px;
+}
+
+

@@ -11,7 +11,6 @@ const Home = (props) => {
     }
 
     const play = () => {
-        console.log(userName)
         props.history.push('/game',{nameUser: userName})
 
     }
@@ -20,6 +19,7 @@ const Home = (props) => {
     return(
         <div id = 'titleGame'>
             <h1>Bienvenidos a Piedra, Papel, Tijera, Lagarto o Spock</h1>
+            <h2>Por favor ingrese su nombre</h2>
             <div>  
             <input type="text" value={userName} name='userName' placeholder='Name' onChange={handleUserName} />      
               </div>

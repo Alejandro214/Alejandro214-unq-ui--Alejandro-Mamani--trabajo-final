@@ -5,6 +5,8 @@ import './App.css'
 import Game from './Game/Game'
 import './Game/Game.css'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Winner from './Winner/Winner'
+
 
 
 const App = () => {
@@ -14,7 +16,9 @@ const App = () => {
     <Router>
       <Switch>
         <Route path ="/game" component = {Game}/>
-        <Route path="/" component={Home} />
+        <Route path = "/winner" component = {Winner} /> 
+
+        <Route path ="/" component={Home} />
       </Switch>
     </Router>
 

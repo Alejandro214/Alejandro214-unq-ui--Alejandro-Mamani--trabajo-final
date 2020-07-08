@@ -5,98 +5,54 @@ import Piedra from "./piedra.jpg"
 import Lagarto from "./lagarto.jpg"
 import Spock from "./spock.jpg"
 
-const papel =() => {
-    return(
-        <div>
-            <figure>
-            <img src = {Papel}  alt = "Papel"></img>
-            </figure>
-        </div>
-    )
-}
-
-const tijera = () => {
-    return(
-        <div>
-            <figure>
-            <img src = {Tijera} alt = "Tijera" ></img>
-            </figure>
-            
-        </div>
-    )
-}
-
-const piedra = () => {
-    return(
-    <div>
-        <figure>
-    <img src = {Piedra} alt = "Piedra"></img>
-    </figure>
-   </div>
-    )
-}
-
-
-
-const lagarto = () => {
-    return(
-        <div>
-        <figure>
-    <img src = {Lagarto} alt = "Lagarto"></img>
-    </figure>
-   </div>
-    )
-} 
-
-const spock = () => {
-    return(
-        <div>
-        <figure>
-    <img src = {Spock} alt = "Spock"></img>
-    </figure>
-   </div>
-    )
-}
 
 
 const Game = (props) => {
     const userName = props.location.state.nameUser
 
 
+    const randomMaquina = (userEligio) => {
+      
+        const lista = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"]
+        const numberRandom = Number.parseInt(Math.random() * lista.length)
+        const jugadaDeMaquina = lista[numberRandom]
+        console.log(jugadaDeMaquina)
+        if (userEligio == "Piedra" && jugadaDeMaquina == "Tijera") {
+            props.history.push('/winner',{winner: "User"})
+        } else {
+            props.history.push('/winner',{winner: "Maquina"})
+
+        }
+    }
 
     
-const randomMaquina = () => {
-    const lista = ["piedra","papel","tijera","lagarto","spock"]
-    const numberRandom = Number.parseInt(Math.random() * lista.length) 
-    if (true){
-        return(
-            <div>
-                       <h1>  WINNER!!</h1>
-            </div>
-        )
-    }else{
-        return(
-            <div>
-         <p>LOSEER :C</p>
-            </div>
-        )
-    }
-}   
 
 
-    return(  
+
+
+ 
+   
+
+   
+ 
+
+
+
+  
+
+    return (
         <div>
-            <div  id = "TitleGame">
+             <div  id = "titleGame">
             <h2>Hola {userName}, por favor selecciona uno</h2>
             </div>
-            <div id = "game">
-                {randomMaquina}
-                {papel()}
-                {piedra()}
-                {tijera()}
-                {lagarto()}
-                {spock()}
-
+          <div id = "game">
+                <figure>
+                    <img src={Piedra} alt="Piedra" alt="Piedra"    onClick= {() =>randomMaquina("Piedra")}></img>
+                    <img src={Papel} alt="Papel"   alt = "Papel"    onClick= {() =>randomMaquina("Papel")}></img>
+                    <img src={Tijera} alt="Tijera" alt="Tijera"   onClick= {() =>randomMaquina("Tijera")}></img>
+                    <img src={Lagarto} alt="Lagarto"alt="Lagarto" onClick= {() =>randomMaquina("Lagarto")}></img>
+                    <img src={Spock} alt="Spock"  alt="Spock"     onClick= {() =>randomMaquina("Spock")}></img>
+                </figure>
             </div>
         </div>
     )

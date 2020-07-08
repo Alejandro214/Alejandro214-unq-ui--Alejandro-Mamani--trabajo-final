@@ -17,10 +17,28 @@ const Game = (props) => {
         const numberRandom = Number.parseInt(Math.random() * lista.length)
         const jugadaDeMaquina = lista[numberRandom]
         console.log(jugadaDeMaquina)
-        if (userEligio == "Piedra" && jugadaDeMaquina == "Tijera") {
+        if ((userEligio == "Piedra" && jugadaDeMaquina == "Tijera") || (userEligio == "Piedra" && jugadaDeMaquina == "Lagarto")) {
             props.history.push('/winner',{winner: "User"})
         } else {
-            props.history.push('/winner',{winner: "Maquina"})
+            if((userEligio == "Tijera" && jugadaDeMaquina == "Papel") || (userEligio == "Tijera" && jugadaDeMaquina == "Lagarto")){
+                props.history.push('/winner',{winner: "User"})
+            }else{
+                if((userEligio == "Papel" && jugadaDeMaquina == "Piedra" ) || (userEligio == "Papel" && jugadaDeMaquina == "Spock")){
+                    props.history.push('/winner',{winner: "User"})
+                }else{
+                    if((userEligio == "Lagarto" && jugadaDeMaquina == "Spock")|| (userEligio == "Lagarto" && jugadaDeMaquina == "Papel")){
+                        props.history.push('/winner',{winner: "User"})
+                    }else{
+                        if((userEligio == "Spock" && jugadaDeMaquina == "Piedra") || (userEligio == "Spock" && jugadaDeMaquina == "Tijera")){
+                            props.history.push('/winner',{winner: "User"})
+                        } else {
+                            props.history.push('/winner',{winner: "Maquina"})
+                        }
+                    }
+                }
+                
+            }
+           
 
         }
     }

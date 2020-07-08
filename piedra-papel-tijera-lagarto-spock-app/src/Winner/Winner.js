@@ -1,4 +1,5 @@
 import React from 'react';
+import youwinner from './youwinner.jpg'
 
 
 
@@ -9,6 +10,7 @@ const Winner =(props) => {
         return (
             <div>
                 <h1>¡Has Ganado!</h1>
+                <img id = "game"src = {youwinner} ></img>
             </div>
         )
     }

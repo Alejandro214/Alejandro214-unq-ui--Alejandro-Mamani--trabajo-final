@@ -18,3 +18,13 @@
     height: 100px;
     width: 100px;;
 }
+.mesajeError{
+    font-size: 150%;
+    font-weight: 700;
+  }
+  .error {
+    text-align: center;
+    color:red;
+    padding: 0 5px;
+    margin-top: 30px;
+  }

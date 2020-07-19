@@ -18,3 +18,36 @@ img {
 
    
 }
+
+.historial{
+    text-align: center;
+    font-size: 20px;
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    transform: translateX(50%) translateY(50%);
+    
+}
+#resultadoPartida{
+    background-color: grey;
+    border:3px solid black;
+    font: oblique bold 120% cursive;
+}
+
+.botonLimpiar {
+    display: grid;
+    height: 50px;
+    width: 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  button:active{ 
+    background:grey; 
+}
+
+button{
+    font-size: 15px;
+    cursor: pointer;
+
+
+}

@@ -28,7 +28,7 @@ const Game = (props) => {
 
 
 
-    
+
 
     const randomMaquina = (userEligio) => {
         partida = partida + 1
@@ -79,6 +79,7 @@ const Game = (props) => {
         setContadorUser(0)
         setContadorMaquina(0)
         setEmpates(0)
+        setelecccionDEMaquina("")
     }
 
 

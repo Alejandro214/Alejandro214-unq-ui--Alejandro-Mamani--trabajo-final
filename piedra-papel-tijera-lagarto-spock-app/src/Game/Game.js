@@ -11,47 +11,45 @@ const Game = (props) => {
     const userName = props.location.state.nameUser
     const [contadorMaquina, setContadorMaquina] = useState(0)
     const [contadorUser, setContadorUser] = useState(0)
-    const [partidas,setPartida]            = useState(0)
-    var winnerUser = 0
+    const [partidas, setPartida] = useState(0)
+    const [empates, setEmpates] = useState(0)
+    const [elecccionDEMaquina, setelecccionDEMaquina] = useState('')
+    let winnerUser = 0
     let winnerMaquina = 0
-    var partida = 0
+    let partida = 0
+    let emps = 0
 
+    const randomElection = () => {
+        const lista = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"]
+        const numberRandom = Number.parseInt(Math.random() * lista.length)
+        return lista[numberRandom]
+    }
 
     const randomMaquina = (userEligio) => {
         partida = partida + 1
         setPartida(partida + partidas)
-        const lista = ["Piedra", "Papel", "Tijera", "Lagarto", "Spock"]
-        const numberRandom = Number.parseInt(Math.random() * lista.length)
-        const jugadaDeMaquina = lista[numberRandom]
+        const jugadaDeMaquina = randomElection()
         if ((userEligio == "Piedra" && jugadaDeMaquina == "Tijera") || (userEligio == "Piedra" && jugadaDeMaquina == "Lagarto")) {
-            // props.history.push('/winner',{winner: "User"})
-            actualizarMarcadorUser()
-            setContadorUser(winnerUser + contadorUser)
+            ganaste(jugadaDeMaquina)
         } else {
             if ((userEligio == "Tijera" && jugadaDeMaquina == "Papel") || (userEligio == "Tijera" && jugadaDeMaquina == "Lagarto")) {
-                //  props.history.push('/winner',{winner: "User"})
-                actualizarMarcadorUser()
-                setContadorUser(winnerUser + contadorUser)
+                ganaste(jugadaDeMaquina)
             } else {
                 if ((userEligio == "Papel" && jugadaDeMaquina == "Piedra") || (userEligio == "Papel" && jugadaDeMaquina == "Spock")) {
-                    //   props.history.push('/winner',{winner: "User"})
-                    actualizarMarcadorUser()
-                    setContadorUser(winnerUser + contadorUser)
+                    ganaste(jugadaDeMaquina)
                 } else {
                     if ((userEligio == "Lagarto" && jugadaDeMaquina == "Spock") || (userEligio == "Lagarto" && jugadaDeMaquina == "Papel")) {
-                        //  props.history.push('/winner',{winner: "User"})
-                        actualizarMarcadorUser()
-                        setContadorUser(winnerUser + contadorUser)
+                        ganaste(jugadaDeMaquina)
                     } else {
                         if ((userEligio == "Spock" && jugadaDeMaquina == "Piedra") || (userEligio == "Spock" && jugadaDeMaquina == "Tijera")) {
-                            //   props.history.push('/winner',{winner: "User"})
-                            actualizarMarcadorUser()
-                            setContadorUser(winnerUser + contadorUser)
+                            ganaste(jugadaDeMaquina)
                         } else {
-                            console.log(winnerMaquina)
-                            //  props.history.push('/winner',{winner: "Maquina"})
-                            actualizarMarcadorMaquina()
-                            setContadorMaquina(winnerMaquina + contadorMaquina)
+                            if (jugadaDeMaquina == userEligio) {
+                               empate(jugadaDeMaquina)
+                            }
+                            else {
+                                pierdes(jugadaDeMaquina)
+                            }
                         }
                     }
                 }
@@ -61,6 +59,9 @@ const Game = (props) => {
 
         }
     }
+    const actualizarEmpates = () => {
+        emps = emps + 1
+    }
     const actualizarMarcadorUser = () => {
         winnerUser = winnerUser + 1
     }
@@ -68,14 +69,31 @@ const Game = (props) => {
     const actualizarMarcadorMaquina = () => {
         winnerMaquina += 1
     }
-    const limpiarHistorial=()=>{
+    const limpiarHistorial = () => {
         setPartida(0)
         setContadorUser(0)
         setContadorMaquina(0)
+        setEmpates(0)
     }
 
 
+    const ganaste = (elecMaquina) => {
+        actualizarMarcadorUser()
+        setContadorUser(winnerUser + contadorUser)
+        setelecccionDEMaquina("Ganaste!, la maquina eligio " + elecMaquina)
+    }
 
+    const pierdes = (elecMaquina) => {
+        actualizarMarcadorMaquina()
+        setContadorMaquina(winnerMaquina + contadorMaquina)
+        setelecccionDEMaquina("Perdiste :C , la maquina eligio " + elecMaquina) 
+    }
+
+    const empate = (elecMaquina) => {
+        actualizarEmpates()
+        setEmpates(emps + empates)
+        setelecccionDEMaquina ("Empate :o, la maquina eligio " + elecMaquina)
+    }
 
 
 
@@ -96,9 +114,11 @@ const Game = (props) => {
 
             </div>
             <div className="historial">
-                <p id="resultadoPartida">Partida {partidas}, Ganaste {contadorUser} vs Maquina {contadorMaquina}</p>
-                <div className = "botonLimpiar">
-                <button onClick = {() =>limpiarHistorial ()}>Limpiar Historial</button>
+                <p id="resultadoPartida">Partida {partidas}, Ganaste {contadorUser} vs Maquina {contadorMaquina}, Empates {empates}</p>
+                <div className="botonLimpiar">
+                    <p id="titleGame">{elecccionDEMaquina}</p>
+
+                    <button onClick={() => limpiarHistorial()}>Limpiar Historial</button>
                 </div>
             </div>
         </div>

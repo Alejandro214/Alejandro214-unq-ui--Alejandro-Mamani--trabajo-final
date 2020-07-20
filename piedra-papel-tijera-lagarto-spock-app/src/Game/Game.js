@@ -25,6 +25,11 @@ const Game = (props) => {
         return lista[numberRandom]
     }
 
+
+
+
+    
+
     const randomMaquina = (userEligio) => {
         partida = partida + 1
         setPartida(partida + partidas)

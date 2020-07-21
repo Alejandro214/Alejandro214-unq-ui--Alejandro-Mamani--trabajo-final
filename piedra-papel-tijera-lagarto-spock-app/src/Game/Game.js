@@ -86,19 +86,19 @@ const Game = (props) => {
     const ganaste = (elecMaquina) => {
         actualizarMarcadorUser()
         setContadorUser(winnerUser + contadorUser)
-        setelecccionDEMaquina("Ganaste!, la maquina eligio " + elecMaquina)
+        setelecccionDEMaquina("Ganaste!, la Computadora eligio " + elecMaquina)
     }
 
     const pierdes = (elecMaquina) => {
         actualizarMarcadorMaquina()
         setContadorMaquina(winnerMaquina + contadorMaquina)
-        setelecccionDEMaquina("Perdiste :C , la maquina eligio " + elecMaquina) 
+        setelecccionDEMaquina("Perdiste :C , la Computadora eligio " + elecMaquina) 
     }
 
     const empate = (elecMaquina) => {
         actualizarEmpates()
         setEmpates(emps + empates)
-        setelecccionDEMaquina ("Empate :o, la maquina eligio " + elecMaquina)
+        setelecccionDEMaquina ("Empate :o, la Computadora eligio " + elecMaquina)
     }
 
 
